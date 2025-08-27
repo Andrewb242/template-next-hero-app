@@ -43,6 +43,8 @@ npm install
 npm run dev
 ```
 
+---
+
 ## 🎨 Customization
 
 ### Theme
