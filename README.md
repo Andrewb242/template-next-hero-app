@@ -27,7 +27,7 @@ Designed as a base for quickly building full-stack apps.
 Clone this template and create a new repo:
 
 ```bash
-gh repo create my-new-project --template YOUR-USERNAME/template-next-hero-app --public --clone
+gh repo create my-new-project --template Andrewb242/template-next-hero-app --public --clone
 cd my-new-project
 ```
 
@@ -42,3 +42,13 @@ npm install
 ```bash
 npm run dev
 ```
+
+## 🎨 Customization
+
+### Theme
+
+To change the theme colors, edit theme.json.
+
+### Fonts
+
+Fonts can be changed within the config/fonts.ts file.
