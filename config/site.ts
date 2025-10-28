@@ -1,9 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Wayfare Pet Care",
-  description:
-    "Your trusted partner in pet care, offering personalized services for your furry friends.",
+  name: "Template Site",
+  description: "Template site",
   navItems: [
     {
       label: "Home",
