@@ -3,7 +3,7 @@
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 
-@config "../tailwind.config.js";
+@config "../tailwind.config.mjs";
 
 h1 {
   @apply text-3xl font-bold mb-4;
@@ -15,8 +15,4 @@ h2 {
 
 p {
   @apply text-base mb-2;
-}
-
-a {
-  @apply text-secondary-500 hover:text-secondary-300;
 }
