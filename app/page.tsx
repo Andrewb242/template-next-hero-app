@@ -2,6 +2,10 @@ import { HeroBanner } from "@/components/HeroBanner";
 import { Footer } from "@/components/Footer";
 import HeroExamples from "@/components/EXAMPLES/HeroExamples";
 import PricingExamples from "@/components/EXAMPLES/PricingExamples";
+import {
+  CarouselExamplesDemo,
+  ContinuousCarousel,
+} from "@/components/EXAMPLES/CarouselExamples";
 
 export default function Home() {
   return (
@@ -17,7 +21,7 @@ export default function Home() {
         />
       </main>
 
-      <PricingExamples />
+      <ContinuousCarousel />
 
       <Footer
         brandName="Template Site"
