@@ -17,6 +17,8 @@ Designed as a base for quickly building full-stack apps.
   - Automatic unused imports cleanup
 - **Prettier** for consistent formatting
 - Ready-to-use project structure
+- **Dockerization Ready** Docker files for deployment
+- **Base Componets** such as Hero Banners, Footers, and more.
 
 ---
 
@@ -54,3 +56,7 @@ To change the theme colors, edit theme.json.
 ### Fonts
 
 Fonts can be changed within the config/fonts.ts file.
+
+### Icons
+
+The React Icons library is used in the config/icons.tsx file. Icons can be easily swapped.
