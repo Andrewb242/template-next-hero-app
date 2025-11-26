@@ -5,14 +5,14 @@
 
 @config "../tailwind.config.mjs";
 
-h1 {
+.prose h1 {
   @apply text-3xl font-bold mb-4;
 }
 
-h2 {
+.prose h2 {
   @apply text-2xl font-semibold mb-3;
 }
 
-p {
+.prose p {
   @apply text-base mb-2;
 }

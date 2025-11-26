@@ -9,6 +9,18 @@ export interface HeroBannerProps {
    */
   title: string;
   /**
+   * Optional logo image URL to display instead of text title
+   */
+  logo?: string;
+  /**
+   * Alt text for the logo image
+   */
+  logoAlt?: string;
+  /**
+   * Custom class name for the logo
+   */
+  logoClassName?: string;
+  /**
    * Optional subtitle or description text
    */
   subtitle?: string;
@@ -64,6 +76,9 @@ export interface HeroBannerProps {
 
 export function HeroBanner({
   title,
+  logo,
+  logoAlt = "Logo",
+  logoClassName = "",
   subtitle,
   alignment = "center",
   variant = "default",
@@ -81,6 +96,21 @@ export function HeroBanner({
     medium: "min-h-[500px]",
     large: "min-h-[700px]",
     screen: "min-h-screen",
+  };
+
+  // Font size classes based on height
+  const titleSizeClasses = {
+    small: "text-2xl md:text-3xl lg:text-4xl",
+    medium: "text-3xl md:text-4xl lg:text-5xl",
+    large: "text-4xl md:text-5xl lg:text-6xl",
+    screen: "text-4xl md:text-5xl lg:text-6xl",
+  };
+
+  const subtitleSizeClasses = {
+    small: "text-sm md:text-base lg:text-lg",
+    medium: "text-base md:text-lg lg:text-xl",
+    large: "text-lg md:text-xl lg:text-2xl",
+    screen: "text-lg md:text-xl lg:text-2xl",
   };
 
   // Alignment classes
@@ -119,7 +149,7 @@ export function HeroBanner({
 
   return (
     <section
-      className={`relative w-full ${heightClasses[height]} ${getBackgroundStyle()} ${className}`}
+      className={`font-sans relative w-full ${heightClasses[height]} ${getBackgroundStyle()} ${className}`}
       style={containerStyle}
     >
       {/* Overlay for background images */}
@@ -135,19 +165,29 @@ export function HeroBanner({
         className={`relative z-10 flex flex-col justify-center ${alignmentClasses[alignment]} ${heightClasses[height]} px-6 md:px-12 lg:px-24`}
       >
         <div className="max-w-4xl">
-          {/* Title */}
-          <h1
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${
-              variant === "image" ? "text-white" : ""
-            }`}
-          >
-            {title}
-          </h1>
+          {/* Title or Logo */}
+          {logo ? (
+            <div className="mb-6">
+              <img
+                src={logo}
+                alt={logoAlt}
+                className={`max-w-full h-auto ${logoClassName}`}
+              />
+            </div>
+          ) : (
+            <h1
+              className={`${titleSizeClasses[height]} font-bold mb-6 ${
+                variant === "image" ? "text-white" : ""
+              }`}
+            >
+              {title}
+            </h1>
+          )}
 
           {/* Subtitle */}
           {subtitle && (
             <p
-              className={`text-lg md:text-xl lg:text-2xl mb-8 ${
+              className={`${subtitleSizeClasses[height]} mb-8 ${
                 variant === "image" ? "text-white/90" : "text-foreground/80"
               }`}
             >
@@ -166,29 +206,30 @@ export function HeroBanner({
                     : "justify-start"
               }`}
             >
-              {primaryAction && (
-                <Button
-                  color="primary"
-                  size="lg"
-                  radius="md"
-                  onPress={() => handleAction(primaryAction)}
-                  className="font-semibold"
-                >
-                  {primaryAction.label}
-                </Button>
-              )}
               {secondaryAction && (
                 <Button
                   color="default"
                   variant="bordered"
                   size="lg"
-                  radius="md"
+                  radius="sm"
                   onPress={() => handleAction(secondaryAction)}
                   className={`font-semibold ${
                     variant === "image" ? "border-white text-white" : ""
                   }`}
                 >
                   {secondaryAction.label}
+                </Button>
+              )}
+              {primaryAction && (
+                <Button
+                  color="primary"
+                  size="lg"
+                  radius="sm"
+                  onPress={() => handleAction(primaryAction)}
+                  className="font-semibold text-white bg-primary-600 hover:bg-primary-700"
+                  variant="shadow"
+                >
+                  {primaryAction.label}
                 </Button>
               )}
             </div>

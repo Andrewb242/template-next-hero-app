@@ -10,7 +10,7 @@ const config = {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@heroui/react/dist/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [heroui(theme)],
+  plugins: [heroui({ ...theme, prefix: "ho", treeshake: true })],
 };
 
 export default config;

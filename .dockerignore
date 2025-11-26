@@ -1,0 +1,50 @@
+# --- Dependencies ---
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Build outputs ---
+.next/
+out/
+dist/
+build/
+
+# --- Development / local ---
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Environment files (never send secrets to Docker) ---
+.env
+.env.*
+!.env.example
+
+# --- Testing ---
+coverage/
+.nyc_output/
+jest.config.*  
+vitest.config.*  
+
+# --- Misc ---
+.DS_Store
+*.pem
+*.key
+*.crt
+*.log
+Thumbs.db
+
+# --- Deployment / CI ---
+.vercel/
+.github/
+.gitlab/
+docker-compose.yml
+compose.yml
+
+# --- Documentation (optional) ---
+*.md
