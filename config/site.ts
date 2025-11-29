@@ -3,6 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "Template Site",
   description: "Template site",
+  url: "https://template-site.com",
   navItems: [
     {
       label: "Home",
