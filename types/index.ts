@@ -10,3 +10,6 @@ export type {
   PricingTier,
   PricingProps,
 } from "../components/Pricing";
+
+// Re-export Form types
+export type { FormData, FormTemplateProps } from "../components/FormTemplate";
