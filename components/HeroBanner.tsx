@@ -7,7 +7,11 @@ export interface HeroBannerProps {
   /**
    * The main title of the hero banner
    */
-  title: string;
+  title?: string;
+  /**
+   * Custom class name for the title
+   */
+  titleClassName?: string;
   /**
    * Optional logo image URL to display instead of text title
    */
@@ -25,6 +29,10 @@ export interface HeroBannerProps {
    */
   subtitle?: string;
   /**
+   * Custom class name for the subtitle
+   */
+  subtitleClassName?: string;
+  /**
    * Optional alignment of text content
    * @default "center"
    */
@@ -33,7 +41,7 @@ export interface HeroBannerProps {
    * Background variant
    * @default "default"
    */
-  variant?: "default" | "gradient" | "image";
+  variant?: "default" | "gradient-dark" | "gradient-light" | "image";
   /**
    * Background image URL (used when variant is "image")
    */
@@ -54,6 +62,15 @@ export interface HeroBannerProps {
   primaryAction?: {
     label: string;
     href?: string;
+    variant?: "ghost" | "faded" | "light" | "flat" | "shadow" | "bordered";
+    color?:
+      | "primary"
+      | "secondary"
+      | "success"
+      | "warning"
+      | "danger"
+      | "default";
+    className?: string;
     onClick?: () => void;
   };
   /**
@@ -62,6 +79,15 @@ export interface HeroBannerProps {
   secondaryAction?: {
     label: string;
     href?: string;
+    variant?: "ghost" | "faded" | "light" | "flat" | "shadow" | "bordered";
+    color?:
+      | "primary"
+      | "secondary"
+      | "success"
+      | "warning"
+      | "danger"
+      | "default";
+    className?: string;
     onClick?: () => void;
   };
   /**
@@ -76,10 +102,12 @@ export interface HeroBannerProps {
 
 export function HeroBanner({
   title,
+  titleClassName = "",
   logo,
   logoAlt = "Logo",
   logoClassName = "",
   subtitle,
+  subtitleClassName = "",
   alignment = "center",
   variant = "default",
   backgroundImage,
@@ -123,8 +151,10 @@ export function HeroBanner({
   // Background styles
   const getBackgroundStyle = () => {
     switch (variant) {
-      case "gradient":
+      case "gradient-dark":
         return "bg-gradient-to-br from-primary-500 via-secondary-500 to-primary-700";
+      case "gradient-light":
+        return "bg-gradient-to-br from-background via-secondary-200 to-primary-300";
       case "image":
         return backgroundImage
           ? `bg-cover bg-center bg-no-repeat`
@@ -166,7 +196,7 @@ export function HeroBanner({
       >
         <div className="max-w-4xl">
           {/* Title or Logo */}
-          {logo ? (
+          {logo && (
             <div className="mb-6">
               <img
                 src={logo}
@@ -174,11 +204,10 @@ export function HeroBanner({
                 className={`max-w-full h-auto ${logoClassName}`}
               />
             </div>
-          ) : (
+          )}
+          {!logo && title && (
             <h1
-              className={`${titleSizeClasses[height]} font-bold mb-6 ${
-                variant === "image" ? "text-white" : ""
-              }`}
+              className={`${titleSizeClasses[height]} font-bold mb-6  ${titleClassName}`}
             >
               {title}
             </h1>
@@ -187,9 +216,7 @@ export function HeroBanner({
           {/* Subtitle */}
           {subtitle && (
             <p
-              className={`${subtitleSizeClasses[height]} mb-8 ${
-                variant === "image" ? "text-white/90" : "text-foreground/80"
-              }`}
+              className={`${subtitleSizeClasses[height]} mb-8  ${subtitleClassName}`}
             >
               {subtitle}
             </p>
@@ -208,26 +235,24 @@ export function HeroBanner({
             >
               {secondaryAction && (
                 <Button
-                  color="default"
-                  variant="bordered"
+                  color={secondaryAction.color || "default"}
+                  variant={secondaryAction.variant || "bordered"}
                   size="lg"
                   radius="sm"
                   onPress={() => handleAction(secondaryAction)}
-                  className={`font-semibold ${
-                    variant === "image" ? "border-white text-white" : ""
-                  }`}
+                  className={secondaryAction.className}
                 >
                   {secondaryAction.label}
                 </Button>
               )}
               {primaryAction && (
                 <Button
-                  color="primary"
+                  color={primaryAction.color || "primary"}
+                  variant={primaryAction.variant || "shadow"}
                   size="lg"
                   radius="sm"
                   onPress={() => handleAction(primaryAction)}
-                  className="font-semibold text-white bg-primary-600 hover:bg-primary-700"
-                  variant="shadow"
+                  className={primaryAction.className}
                 >
                   {primaryAction.label}
                 </Button>
@@ -236,7 +261,7 @@ export function HeroBanner({
           )}
 
           {/* Custom children content */}
-          {children && <div className="mt-8">{children}</div>}
+          {children && <div>{children}</div>}
         </div>
       </div>
     </section>
