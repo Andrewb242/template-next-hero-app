@@ -23,11 +23,13 @@ export default function HeroExamples() {
 
       {/* Example 2: Gradient Hero with Actions */}
       <section>
-        <h2 className="text-2xl font-bold mb-4 px-6">Gradient Hero with Actions</h2>
+        <h2 className="text-2xl font-bold mb-4 px-6">
+          Gradient Hero with Actions
+        </h2>
         <HeroBanner
           title="Build Something Amazing"
           subtitle="Start your journey with our powerful tools and intuitive interface"
-          variant="gradient"
+          variant="gradient-light"
           height="large"
           alignment="center"
           primaryAction={{
@@ -86,7 +88,7 @@ export default function HeroExamples() {
           title="Innovation Meets Simplicity"
           subtitle="Experience the perfect balance of power and ease of use"
           alignment="right"
-          variant="gradient"
+          variant="gradient-light"
           height="medium"
           primaryAction={{
             label: "Get Started",
@@ -135,11 +137,13 @@ export default function HeroExamples() {
 
       {/* Example 8: Hero with Custom Children */}
       <section>
-        <h2 className="text-2xl font-bold mb-4 px-6">Hero with Custom Content</h2>
+        <h2 className="text-2xl font-bold mb-4 px-6">
+          Hero with Custom Content
+        </h2>
         <HeroBanner
           title="Flexible & Customizable"
           subtitle="Add any custom content to your hero section"
-          variant="gradient"
+          variant="gradient-light"
           height="large"
           alignment="center"
         >
@@ -162,7 +166,9 @@ export default function HeroExamples() {
 
       {/* Example 9: Minimal Hero */}
       <section>
-        <h2 className="text-2xl font-bold mb-4 px-6">Minimal Hero (No Actions)</h2>
+        <h2 className="text-2xl font-bold mb-4 px-6">
+          Minimal Hero (No Actions)
+        </h2>
         <HeroBanner
           title="Clean & Simple"
           subtitle="Sometimes less is more"
@@ -178,7 +184,7 @@ export default function HeroExamples() {
         <HeroBanner
           title="Focus on What Matters"
           subtitle="One clear call-to-action for better conversion"
-          variant="gradient"
+          variant="gradient-light"
           height="medium"
           alignment="center"
           primaryAction={{
